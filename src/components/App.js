@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div className="catch-of-the-day">
         <div className="menu">
-          <Header />
+          <Header tagline="Fresh Seafood Market" />
         </div>
         <Order />
         <Inventory/>
@@ -18,3 +18,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+//tagline(props) was defined in Header.js use it by giving the value tagline = "dsfsdfsdfs"
