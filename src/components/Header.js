@@ -1,12 +1,26 @@
 import React from 'react';
 
-
+// create var Header and 'render' part inside. Pass props, but since it's not bound to React anymore, get rid of this
+  const Header = (props) => {
+    return (
+      <header className="top">
+        <h1>Catch
+          <span className="of the">
+            <span className="of">of</span>
+            <span className="the">the</span>
+          </span>
+           Day
+        </h1>
+        <h3 className="tagline">{props.tagline}</h3>
+      </header>
+    )
+  }
 
 
 
 // ********* if you are going to use *Stateless function => means if you are not going to use only one method, like render, it does not make sense
 //to use entire react Component.
-//What all Header class does is 
+//What all Header class does is
 // class Header extends React.Component {
 //   render(){
 //     return (
