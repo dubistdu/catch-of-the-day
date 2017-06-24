@@ -7,23 +7,25 @@ import{ render } from 'react-dom';
 //Router setting. Even a router is a component in React
 import{ BrowserRouter, Match, Miss } from 'react-router';
 
-import StorePicker from './components/StorePicker';
-import NotFound from './components/NotFound';
 import './css/style.css';
 import App from './components/App';
+import StorePicker from './components/StorePicker';
+import NotFound from './components/NotFound';
 
 const Root = () => {
   return(
     <BrowserRouter>
-       //Match can't be a direct child of BrowserRouter. Hence div
+
       <div>
-        <Match exactly pattern="/" component={StorePicker}/>
-        <Match pattern="/store/:storeId" component={App}/>
-        <Miss component={notFound} />
+        <Match exactly pattern="/" component={StorePicker} />
+        <Match pattern="/store/:storeId" component={App} />
+        <Miss component={NotFound} />
       </div>
     </BrowserRouter>
   )
 }
+// ^^^ Match can't be a direct child of BrowserRouter. Hence div
+// Do not comment within return. It messes up for some reason
 
 //jsx '<' open Component, '/>' close Component
 //second argument. What Dom element should render out to
