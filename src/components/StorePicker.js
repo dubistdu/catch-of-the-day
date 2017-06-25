@@ -14,8 +14,10 @@ class StorePicker extends React.Component {
     event.preventDefault();
     console.log('You Changed the URL');
     // first grab the text from the box
-    console.log(this.storeInput.value);
+    const storeId=this.storeInput.value;
+    console.log('Going to ${storId}');
     // second we're going to transition from / to /store/:storeId
+    this.context.router.transitionTo('/store/${storeId}');
   }
 
   render(){
@@ -34,9 +36,13 @@ class StorePicker extends React.Component {
        //things like img tag that did not need closing tag in html needs to self close here
        //render method is bound to the class so  "this." refers to, equal to the component that it's in. I here it's 'StorePicker'
        //madeup method, which is non native React method needs something to have this. bound to the component
+       //ref={(input)=>{this.storeInput=input}} /> using function ref {()} // ref is actual way to reference the input
   }
 }
 
+StorePicker.contextTypes = {
+  router: React.PropTypes.object
+}
 export default StorePicker;
 
 //We've created a component 'StorePciker'
