@@ -14,12 +14,13 @@ class StorePicker extends React.Component {
     event.preventDefault();
     console.log('You Changed the URL');
     // first grab the text from the box
-    const storeId=this.storeInput.value;
-    console.log('Going to ${storId}');
+    const storeId = this.storeInput.value;
+    console.log(`Going to ${storeId}`)
     // second we're going to transition from / to /store/:storeId
-    this.context.router.transitionTo('/store/${storeId}');
+    //surfacing router (to make current react component avail (StorePciker) use context)
+    this.context.router.transitionTo(`/store/${storeId}`);
   }
-
+//(`/store/${storeId}`)  Careful not to use '' instead of ``
   render(){
     //anywhere else
      return (
@@ -46,3 +47,5 @@ StorePicker.contextTypes = {
 export default StorePicker;
 
 //We've created a component 'StorePciker'
+
+//React like small nice component. Not having something availble globally
