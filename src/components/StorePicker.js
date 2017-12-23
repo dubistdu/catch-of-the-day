@@ -9,6 +9,8 @@ class StorePicker extends React.Component {
   // }
   //^^^ one way of binding non native react method to component
   // super runs react component firtst then custom component
+  // since render is bound to the component you can do this.goToStore but if you are using in custom class it needs to be bound
+  // to component frist.
 
   goToStore(event) {
     event.preventDefault();
@@ -25,8 +27,7 @@ class StorePicker extends React.Component {
     //anywhere else
      return (
        <form className="store-selector" onSubmit={(e)=>this.goToStore(e)}>
-       {/* to comment out within jsx, you can't do // use {/* comment*/}
-          {/*comment location matters*/}
+
         <h2>Please enter a store</h2>
         <input type="text" required placeholder="Store Name" defaultValue={
             getFunName()} ref={(input)=>{this.storeInput=input}} />
@@ -46,6 +47,11 @@ StorePicker.contextTypes = {
 }
 export default StorePicker;
 
-//We've created a component 'StorePciker'
+//We are setting contextTypes to router
+//What it does is...tell React the StorePicker component expects something called 'router'
 
 //React like small nice component. Not having something availble globally
+
+
+//  {/* to comment out within jsx, you can't do // use {/* comment*/}
+//   {/*comment location matters*/}

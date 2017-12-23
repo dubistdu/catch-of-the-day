@@ -4,21 +4,20 @@ import React from 'react';
   const Header = (props) => {
     return (
       <header className="top">
-        <h1>Catch
-          <span className="of the">
+        <h1>
+          Catch
+          <span className="ofThe">
             <span className="of">of</span>
             <span className="the">the</span>
           </span>
            Day
         </h1>
-        <h3 className="tagline">{props.tagline}</h3>
+        <h3 className="tagline"><span>{props.tagline}</span></h3>
       </header>
     )
   }
 
-
-
-// ********* if you are going to use *Stateless function => means if you are not going to use only one method, like render, it does not make sense
+// ********* if you are going to use *Stateless function => means if you are not going to use any method, like render, it does not make sense
 //to use entire react Component.
 //What all Header class does is
 // class Header extends React.Component {
