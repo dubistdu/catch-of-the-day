@@ -12,8 +12,8 @@ class AddFishForm extends React.Component {
       image: this.image.value,
     }
     console.log(fish)
-    // this.props.addFish(fish);
-    // this.fishForm.reset();
+    this.props.addFish(fish);
+    this.fishForm.reset();
   }
 //state is always tied to a Component
 

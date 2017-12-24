@@ -14,7 +14,7 @@ class App extends React.Component {
       order: {}
     };
   }
-  
+
 addFish(fish) {
   //update state
   const fishes = {...this.state.fishes};
@@ -33,7 +33,7 @@ addFish(fish) {
           <Header tagline="Fresh Seafood Market" />
         </div>
         <Order/>
-        <Inventory/>
+        <Inventory addFish={this.addFish}/>
       </div>
     )
   }
