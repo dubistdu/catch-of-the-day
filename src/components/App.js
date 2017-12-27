@@ -2,12 +2,18 @@ import React from 'react';
 import Header from './Header';
 import Inventory from './Inventory';
 import Order from './Order'
+import sampleFishes from '../sample-fishes.js';
 
 class App extends React.Component {
   constructor() {
     super();
 
+    //binds addFish method to component itself
     this.addFish = this.addFish.bind(this);
+
+    //binds loadSamples method to component itself
+    this.loadSamples = this.loadSamples.bind(this);
+
       //get initial state. Either array or object is fine
     this.state = {
       fishes: {},
@@ -26,6 +32,11 @@ addFish(fish) {
 
 }
 
+loadSamples() {
+  this.setState({
+    fishes: sampleFishes
+  });
+}
   render() {
     return (
       <div className="catch-of-the-day">
