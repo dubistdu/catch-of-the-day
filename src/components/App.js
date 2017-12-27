@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor() {
     super();
 
-    //binds addFish method to component itself
+    //binds addFish method to component itself which makes it possible to use 'this' inside of the method (this => component)
     this.addFish = this.addFish.bind(this);
 
     //binds loadSamples method to component itself
@@ -37,6 +37,8 @@ loadSamples() {
     fishes: sampleFishes
   });
 }
+
+// passing down addFish and loadSamples via props
   render() {
     return (
       <div className="catch-of-the-day">
@@ -44,11 +46,12 @@ loadSamples() {
           <Header tagline="Fresh Seafood Market" />
         </div>
         <Order/>
-        <Inventory addFish={this.addFish}/>
+        <Inventory addFish={this.addFish} loadSamples={this.loadSamples}/>
       </div>
     )
   }
 }
+
 
 export default App;
 
