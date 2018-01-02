@@ -62,7 +62,8 @@ addToOrder(key) {
             }
           </ul>
         </div>
-        <Order/>
+        <Order fishes={this.state.fishes} order={this.state.order}
+        />
         <Inventory addFish={this.addFish} loadSamples={this.loadSamples}/>
       </div>
     )
@@ -70,7 +71,7 @@ addToOrder(key) {
 }
 
 // key={key} for React use. hence ... need to create index={key} to index fish
-
+//Order why only pass fishes and orders instaead of passing the entire state down? Only pick and choose what you needs
 export default App;
 
 //tagline(props) was defined in Header.js use it by giving the value tagline = "dsfsdfsdfs"
