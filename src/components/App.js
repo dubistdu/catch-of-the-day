@@ -15,7 +15,7 @@ class App extends React.Component {
 
     //binds loadSamples method to component itself
     this.loadSamples = this.loadSamples.bind(this);
-
+    this.addToOrder = this.addToOrder.bind(this);
       //get initial state. Either array or object is fine
     this.state = {
       fishes: {},
@@ -40,6 +40,14 @@ loadSamples() {
   });
 }
 
+addToOrder(key) {
+  // take a copy of our state
+  const order = {...this.state.order};
+  // update or add the new number of fish ordered
+  order[key] = order[key] + 1 || 1;
+  //updarte our state
+  this.setState({ order });
+}
 // passing down addFish and loadSamples via props
   render() {
     return (
@@ -50,7 +58,7 @@ loadSamples() {
             {
               Object
                 .keys(this.state.fishes)
-                .map(key => <Fish key={key} details={this.state.fishes[key]} />)
+                .map(key => <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder}/>)
             }
           </ul>
         </div>
@@ -61,6 +69,7 @@ loadSamples() {
   }
 }
 
+// key={key} for React use. hence ... need to create index={key} to index fish
 
 export default App;
 
