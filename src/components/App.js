@@ -4,6 +4,7 @@ import Inventory from './Inventory';
 import Fish from './Fish';
 import Order from './Order'
 import sampleFishes from '../sample-fishes.js';
+import base from '../base';
 
 
 class App extends React.Component {
@@ -22,33 +23,45 @@ class App extends React.Component {
       order: {}
     };
   }
+    componentWillMount() {
+    // this runs right before the <App> is rendered
+    this.ref = base.syncState(`${this.props.params.storeId}/fishes`, {
+      context: this,
+      state: 'fishes'
+    });
 
-addFish(fish) {
-  //update state
-  const fishes = {...this.state.fishes};
-  //add in our new fish
-  const timestamp = Date.now();
-  fishes[`fish-${timestamp}`] = fish;
-  // set state
-  this.setState({ fishes });
+  }
 
-}
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
 
-loadSamples() {
-  this.setState({
-    fishes: sampleFishes
-  });
-}
+  addFish(fish) {
+    //update state
+    const fishes = {...this.state.fishes};
+    //add in our new fish
+    const timestamp = Date.now();
+    fishes[`fish-${timestamp}`] = fish;
+    // set state
+    this.setState({ fishes });
 
-addToOrder(key) {
-  // take a copy of our state
-  const order = {...this.state.order};
-  // update or add the new number of fish ordered
-  order[key] = order[key] + 1 || 1;
-  //updarte our state
-  this.setState({ order });
-}
-// passing down addFish and loadSamples via props
+  }
+
+  loadSamples() {
+    this.setState({
+      fishes: sampleFishes
+    });
+  }
+
+  addToOrder(key) {
+    // take a copy of our state
+    const order = {...this.state.order};
+    // update or add the new number of fish ordered
+    order[key] = order[key] + 1 || 1;
+    //updarte our state
+    this.setState({ order });
+  }
+  // passing down addFish and loadSamples via props
   render() {
     return (
       <div className="catch-of-the-day">
